@@ -6,7 +6,7 @@ const todoSchema= mongoose.Schema({
     email:{type:String,required:true},
     address:{type:String,required:true},
     city:{type:String,required:true},
-    gender:{type:String,required:true,enum:["male","female","othes"]},
+    gender:{type:String,required:true,enum:["male","female"]},
     mobile:{type:Number,required:true},
 })
 

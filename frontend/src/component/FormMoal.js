@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
  import "./Formstyle.css"
 function FormMoal() {
-  const [user, setuser] = useState({ email: "", password: "" });
+  const [user, setuser] = useState({ name:"" ,address:"", email: "", mobile: "",gender:"" ,city:""});
 
   let name, value;
   const handeler = (e) => {
@@ -11,19 +11,19 @@ function FormMoal() {
     value = e.target.value;
     setuser({ ...user, [name]: value });
   };
-
   const dataSubmit = (e) => {
     e.preventDefault();
+    console.log(user)
   };
+  
   return (
-    <Form onSubmit={dataSubmit}>
+    <Form onSubmit={dataSubmit} method="post" >
       <Form.Group className="mb-3 boxStyle mt-3" controlId="">
         <Form.Label>Name</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Enter Name"
           name="name"
-          value={user.name}
+          value={name}
           onChange={handeler}
         />
       </Form.Group>
@@ -32,15 +32,14 @@ function FormMoal() {
         <Form.Label>Address</Form.Label>
         <Form.Control
           as="textarea"
-          placeholder="Leave a comment here"
-          style={{ height: "70px" }}
+          
+          onChange={(e) => setuser({...user, address: e.target.value})}
         />
       </Form.Group>
       <Form.Group className="mb-3 boxStyle" controlId="">
         <Form.Label>Email</Form.Label>
         <Form.Control
           type="text"
-          placeholder="Enter email"
           name="email"
           value={user.email}
           onChange={handeler}
@@ -52,20 +51,22 @@ function FormMoal() {
         <Form.Control
           type="number"
           placeholder="Mobile"
-          value={user.password}
-          name="password"
+          value={user.mobile}
+          name="mobile"
           onChange={handeler}
         />
       </Form.Group>
 
       <Form.Label  className=" boxStyle">Gender</Form.Label>
-      <Form.Group>
-        <Form.Check inline label="Male" name="gender" type="radio" />
-        <Form.Check inline label="Female" name="gender" type="radio" />
+      <Form.Group onChange={handeler}
+      
+          >
+        <Form.Check inline label="Male" name="gender" type="radio" value="Male" />
+        <Form.Check inline label="Female" name="gender" type="radio" value="Female"  />
       </Form.Group>
 
       <Form.Group>
-        <Form.Select aria-label="Floating label select example">
+        <Form.Select aria-label="Floating label select example"  onChange={(e) => setuser({...user, city: e.target.value})}>
           <option>select menu</option>
           <option value="1">One</option>
           <option value="2">Two</option>

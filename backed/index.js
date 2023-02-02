@@ -9,12 +9,11 @@ const connect=require("./coonection")
 
 
 
-app.use(express.json())
 app.use(cors());
+app.use(express.json())
 app.use("/todo",TodoRouter);
 
 app.get("/",(req,res)=>{
-     
      res.send("data");
 })
 
