@@ -1,14 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Details from './component/Details';
-import ReactModal from './component/ReactModal';
+import Paginations from './component/Paginations'
+import Tablee from './component/Tablee';
+
+
+//import ReactModal from './component/ReactModal';
+import Userhome from './component/Userhome';
 
 function App() {
   return (
     <div >
    
-      
-<ReactModal ></ReactModal>
-      <Details></Details>
+     <Userhome></Userhome> 
+    <Tablee></Tablee>
+   <Paginations className='ml-auto'></Paginations>
     </div>
   );
 }

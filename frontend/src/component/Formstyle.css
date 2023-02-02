@@ -1,0 +1,15 @@
+.boxStyle{
+    line-height: .8;
+    
+}
+.modelstyle{
+    border-radius:8px ;
+    border: 4px solid gray;
+    
+}
+.userhome{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
