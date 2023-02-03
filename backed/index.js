@@ -11,7 +11,7 @@ const connect=require("./coonection")
 
 app.use(cors());
 app.use(express.json())
-app.use("/todo",TodoRouter);
+app.use("/",TodoRouter);
 
 app.get("/",(req,res)=>{
      res.send("data");

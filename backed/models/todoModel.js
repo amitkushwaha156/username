@@ -1,16 +1,14 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
+const todoSchema = mongoose.Schema({
+  name: { type: String, required:true },
+  email: { type: String, required: true, unique: true },
+  address: { type: String },
+  city: { type: String },
+  gender: { type: String },
+  mobile: { type: Number },
+});
 
-const todoSchema= mongoose.Schema({
-    name:{type:String,required:true},
-    email:{type:String,required:true},
-    address:{type:String,required:true},
-    city:{type:String,required:true},
-    gender:{type:String,required:true,enum:["male","female"]},
-    mobile:{type:Number,required:true},
-})
-
-
-const todoModel  = mongoose.model('todo',todoSchema)
+const todoModel = new mongoose.model("todo", todoSchema);
 
 module.exports = todoModel;

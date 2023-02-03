@@ -1,9 +1,19 @@
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
- import "./Formstyle.css"
+import "./Formstyle.css";
+
 function FormMoal() {
-  const [user, setuser] = useState({ name:"" ,address:"", email: "", mobile: "",gender:"" ,city:""});
+  const [user, setuser] = useState({
+    id:"",
+    name: "",
+    address: "",
+    email: "",
+    mobile: "",
+    gender: "",
+    city: "",
+  });
 
   let name, value;
   const handeler = (e) => {
@@ -13,11 +23,21 @@ function FormMoal() {
   };
   const dataSubmit = (e) => {
     e.preventDefault();
-    console.log(user)
+
+    //console.log(user);
+
+    axios
+      .post("http://localhost:8080/", user)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
-  
+
   return (
-    <Form onSubmit={dataSubmit} method="post" >
+    <Form onSubmit={dataSubmit}>
       <Form.Group className="mb-3 boxStyle mt-3" controlId="">
         <Form.Label>Name</Form.Label>
         <Form.Control
@@ -25,6 +45,7 @@ function FormMoal() {
           name="name"
           value={name}
           onChange={handeler}
+          required
         />
       </Form.Group>
 
@@ -32,8 +53,7 @@ function FormMoal() {
         <Form.Label>Address</Form.Label>
         <Form.Control
           as="textarea"
-          
-          onChange={(e) => setuser({...user, address: e.target.value})}
+          onChange={(e) => setuser({ ...user, address: e.target.value })}
         />
       </Form.Group>
       <Form.Group className="mb-3 boxStyle" controlId="">
@@ -42,7 +62,7 @@ function FormMoal() {
           type="text"
           name="email"
           value={user.email}
-          onChange={handeler}
+          onChange={handeler} required
         />
       </Form.Group>
 
@@ -53,29 +73,46 @@ function FormMoal() {
           placeholder="Mobile"
           value={user.mobile}
           name="mobile"
-          onChange={handeler}
+          onChange={handeler} required
         />
       </Form.Group>
 
-      <Form.Label  className=" boxStyle">Gender</Form.Label>
-      <Form.Group onChange={handeler}
-      
-          >
-        <Form.Check inline label="Male" name="gender" type="radio" value="Male" />
-        <Form.Check inline label="Female" name="gender" type="radio" value="Female"  />
+      <Form.Label className=" boxStyle">Gender</Form.Label>
+      <Form.Group onChange={handeler}  className="mb-3"  required>
+        <Form.Check
+          inline
+          label="Male"
+          name="gender"
+          type="radio"
+          value="Male"
+          
+        />
+        <Form.Check
+          inline
+          label="Female"
+          name="gender"
+          type="radio"
+          value="Female"
+          
+        />
       </Form.Group>
 
       <Form.Group>
-        <Form.Select aria-label="Floating label select example"  onChange={(e) => setuser({...user, city: e.target.value})}>
-          <option>select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
+        <Form.Select className="mb-3"
+          aria-label="Floating label "
+          onChange={(e) => setuser({ ...user, city: e.target.value })}
+      
+        >
+          <option>City</option>
+          <option value="satna">Satna</option>
+          <option value="kota" defaultValue>Kota</option>
+          <option value="delhi">Delhi</option>
+          <option value="ahmedabad">Ahmedabad</option>
         </Form.Select>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+        <Form.Check type="checkbox" label="Check me out" defaultChecked/>
       </Form.Group>
       <Button variant="primary" type="submit">
         Submit

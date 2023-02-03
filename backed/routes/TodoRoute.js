@@ -1,16 +1,30 @@
-const todoModel= require("../models/todoModel")
-const app= require("express").Router()
+const todoModel = require("../models/todoModel");
+const app = require("express").Router();
 
+// app.get("/todo",(req,res)=>{
+//     res.send("yoyo")
+// })
+app.get("/todo", async (req, res) => {
+  try {
+    const todoModels = await todoModel.find();
+    res.send(todoModels);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
 
-app.get("/",(req,res)=>{
-    res.send("yoyo")
-})
-app.post("/",async(req,res)=>{
-   const {name,email,address,city,gender,mobile}= req.body
-   const data= await todoModel.create({name,email,address,city,gender,mobile})
-   res.send({message:"data added"})
-})
+app.post("/", async (req, res) => {
+  const { name, email, address, city, gender, mobile } = req.body;
+  const data = await todoModel.create({
+    name,
+    email,
+    address,
+    city,
+    gender,
+    mobile,
+  });
+  //console.log(data)
+  res.send({ message: "data added" });
+});
 
-
-module.exports= app
-
+module.exports = app;
