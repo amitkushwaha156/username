@@ -5,7 +5,7 @@ import ReactModal from "./ReactModal";
 function Userhome() {
   return (
     <div className="userhome px-4">
-      <div className="d-flex ">
+      <div className="d-flex justify-content-around">
         <i className="bi bi-people-fill">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -38,6 +38,7 @@ function Userhome() {
           </i>
         </div>
       </div>
+      
     </div>
   );
 }

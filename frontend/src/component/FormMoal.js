@@ -45,7 +45,7 @@ function FormMoal() {
           name="name"
           value={name}
           onChange={handeler}
-          required
+          
         />
       </Form.Group>
 
@@ -62,7 +62,7 @@ function FormMoal() {
           type="text"
           name="email"
           value={user.email}
-          onChange={handeler} required
+          onChange={handeler} 
         />
       </Form.Group>
 
@@ -73,12 +73,12 @@ function FormMoal() {
           placeholder="Mobile"
           value={user.mobile}
           name="mobile"
-          onChange={handeler} required
+          onChange={handeler} 
         />
       </Form.Group>
 
       <Form.Label className=" boxStyle">Gender</Form.Label>
-      <Form.Group onChange={handeler}  className="mb-3"  required>
+      <Form.Group onChange={handeler}  className="mb-3"  >
         <Form.Check
           inline
           label="Male"
