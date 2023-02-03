@@ -19,12 +19,12 @@ function FormMoal() {
   const handeler = (e) => {
     name = e.target.name;
     value = e.target.value;
-    setuser({ ...user, [name]: value });
+    setuser({ ...user, [name]: value});
   };
   const dataSubmit = (e) => {
     e.preventDefault();
 
-    //console.log(user);
+   // console.log(user);
 
     axios
       .post("http://localhost:8080/", user)
