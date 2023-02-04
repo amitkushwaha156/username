@@ -12,6 +12,17 @@ app.get("/todo", async (req, res) => {
     res.status(400).send(e);
   }
 });
+app.get("/todo/:id", async (req, res) => {
+  try {
+    const todoitemModels = await todoModel.findOne();
+    res.send(todoitemModels)
+    console.log(todoitemModels)
+  } catch (e) {
+    res.status(400).send(e);
+  
+  }
+});
+
 
 app.delete("/:id", async(req,res)=>{
   try {

@@ -1,8 +1,27 @@
-import React from "react";
+import React, { useState,useEffect } from "react";
 import ReactModal from "./ReactModal";
+import axios from "axios";
+
 //import Form from "react-bootstrap/Form";
 
 function Userhome() {
+
+
+  const [id,setid]=useState(``)
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/todo/${id}`)
+      .then((res) => {
+         console.log(res.data)
+      
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }, [id]);
+
+console.log(id)
   return (
     <div className="userhome px-4">
       <div className="d-flex justify-content-around">
@@ -26,9 +45,12 @@ function Userhome() {
           <div className="form-outline">
             <input
               id="search-input"
-              type="search"
+              type="text"
               placeholder="Search"
-              className="form-control"
+              className="form-control" 
+              value={id} onChange={e=>
+                setid(e.target.value)
+                                  }
             />
           </div>
         </div>
@@ -38,8 +60,8 @@ function Userhome() {
           </i>
         </div>
       </div>
-      
     </div>
+   
   );
 }
 

@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Paginations from './component/Paginations'
+//import Paginations from './component/Paginations'
 import Tablee from './component/Tablee';
 
 
@@ -12,7 +12,7 @@ function App() {
    
      <Userhome></Userhome> 
     <Tablee></Tablee>
-   <Paginations className='ml-auto'></Paginations>
+   {/* <Paginations className='ml-auto'></Paginations> */}
     </div>
   );
 }
